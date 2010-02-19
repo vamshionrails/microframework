@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rubigen'
+
+# Framework Version
+
+if %w(-v --version).include? ARGV.first
+  require File.join(File.dirname(__FILE__), '..', 'lib', 'microframework_version')
+  puts "#{File.basename($0)} #{Microframework::VERSION}"
+  exit(0)
+end
+
+require 'rubigen/scripts/generate'
+source = RubiGen::PathSource.new(:application, 
+ File.join(File.dirname(__FILE__), "../generators"))
+RubiGen::Base.reset_sources
+RubiGen::Base.append_sources source
+RubiGen::Scripts::Generate.new.run(ARGV, :generator => 'microframework')
