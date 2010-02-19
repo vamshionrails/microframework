@@ -1,113 +1,78 @@
-= sinatra-gen
+MVC FRAMEWORK Based on Sinatra
 
-http://github.com/quirkey/sinatra-gen
+Structure
+  config.ru
+  index.rb
+    config
+	console.cfg
+    	database.cfg
+	servers.cfg
+	monitor.cfg
+	benchmark.cfg
+	automigrations.cfg
+	tuner.cfg
+	cloud.cfg
+	gemfile.cfg
+	scm
+	   git/cvs/svn
+     Presentation
+	M
+	V
+	C
+     Resources
+	public
+	log
+	tmp
+     Tests
+	RSpec/Cucumber
+	Unit/Functional/Integration
+        Watir
+     Cloud
+	ec2 resources
+	google resources
+     Linkers
+	Pagination.rb
+	graph.rb
+	
 
-== DESCRIPTION:
+Introduction
+	Microframework is a small framework based on sinatra, extended with MVC structure mostly concentrating on easy configuration, Advanced Techniques, and should look clean and green in the 
+cloud.
 
-sinatra-gen generates a common file structure and basic app files for a web app utilizing the sinatra framework.
-For more information on sinatra, check out http://sinatrarb.com
+Start
+	1. ruby <projectname> <type of project>
+		create project with type of project , it may be a cloud based or database based or web
+        	generates config.ru and index.rb file
+	2. ruby generate_presentation --M <modelname> --C <controllername> --V <viewname> 
+		generate presentation layer with model, controller and a view
+	3. ruby generate_config console, database, servers, monitor, benchmark, tuner, cloud, scm
+		generates configuration for the projects including database, servers, monitor, benchmark etc
+		Note: we can generate individually the configs
+	4. ruby generate_resources public,log, tmp
+		generate public resources including public, log and tmp
+	5. ruby generate_resource jquery/dojo/extjs/scriptacolous
+		generate javascripts frameworks
+	6. ruby switch_environment <development, test, production>
+		we can easily switch between environments
+	7. ruby generate_multi_databases <sequel, mysql, pgsql>
+		configures multiple databases
+	8. ruby generate_cloud < ec2 || google|| others >
+		configures ec2 to use along with your application
+	9. ruby generate_tests <rspec || watir || ufi>
+		generates tests either rspec, watir, or ufi
+	10. ruby generate_templates admin
+		generates template for admin
+	11. ruby generate_tuner
+		tunes application/server/configurations
+	12. ruby deploy
+		deploys your application based on configurations
+	13. ruby bundler
 
-== SYNOPSIS:
-  
-sinatra-gen has a bunch of different options (based looseley on merb-gen) to try to not lock the 
-user into any specific frameworks/dev practices.
+still to come
 
-Run:
-
-  sinatra-gen [appname] [options] [paths]
-  
-e.g.
-
-  sinatra-gen mysinatrapp --vendor --init --test=shoulda --views=haml get:/ post:/:id
-
-! Note: As of version 0.4.0 by default the sinatra app is placed in lib/appname.rb and is a subclass of Sinatra::Application. If you want 'classic' style apps (no class/module) use the --tiny option.
-
-=== Actions
-
-For even faster app development you specify actions to include in your app when generating.
-Actions are written out as
-
-  http_method:path
-
-And are separated by spaces. For example:
-
-  get:/ post:/:id put:/update/*
-  
-Will be added you your app as:
-
-  get '/' do
-  end
-  
-  post '/:id' do
-  end
-  
-  put '/update/*' do
-  end
-
-It will also generate test skeletons in the test framework of your choosing.
-
-=== Middleware
-
-You can specify middleware to include by passing the filename(s) or class name(s), seperated by commas.
-  
-  sinatra-gen myapp --middleware=rack/flash,Rack::Cache
-  
-Will place both the 'require' and 'use' statements in your app.
-
-  require 'rack/flash'
-  require 'rack/cache'
-  
-  #...
-  
-  use Rack::Flash
-  use Rack::Cache
-
-=== Options 
-
-(can also be obtained by running sinatra-gen with no arguments):
-
-    -v, --version                    Show the sinatra-gen version number and quit.
-    -d, --vendor                     Extract the latest sinatra to vendor/sinatra
-        --tiny                       Only create the minimal files.
-        --init                       Initialize a git repository
-        --heroku                     Create a Heroku app (also runs 'git init').
- Optionally, specify the path to the heroku bin
-        --cap                        Adds config directory with basic capistrano deploy.rb
-        --scripts                    Install the rubigen scripts (script/generate, script/destroy)
-        --test=test_framework        Specify your testing framework (bacon (default)/rspec/spec/shoulda/test)
-        --views=view_framework       Specify your view framework (haml (default)/erb/builder)
-        --middleware=rack-middleware Specify Rack Middleware to be required and included (comma delimited)
-        --vegas, --bin=[bin_name]    Create an executable bin using Vegas. Pass an optional bin_name
-General Options:
-    -h, --help                       Show this help message and quit.
-    -p, --pretend                    Run but do not make any changes.
-    -f, --force                      Overwrite files that already exist.
-    -s, --skip                       Skip files that already exist.
-    -q, --quiet                      Suppress normal output.
-    -t, --backtrace                  Debugging: show backtrace on errors.
-    -c, --svn                        Modify files with subversion. (Note: svn must be in path)
-    -g, --git                        Modify files with git. (Note: git must be in path)
+	
+	
 
 
-The --tiny option will create no directories. Just an app.rb, a Rakefile, and a config.ru (Rackup file)
-
-== ACKNOWLEDGEMENTS:
-
-Big props to the Sinatra developers (http://github.com/bmizerany/sinatra/).
-Also, thanks to Dr. Nic (http://github.com/drnic) for the Rubigen and Newgem libraries
-
-== REQUIREMENTS:
-
-To use the --vendor option, git must be installed. 
-To use the --bin/vegas option Vegas is required (sudo gem install vegas). 
-To use the --heroku option, a Heroku account and the heroku gem is required (sudo gem install heroku).
-
-To run the app without using the vendor option, the sinatra gem must be installed.
-
-== INSTALL:
-
-  sudo gem install sinatra-gen
-
-You can also install directly from github:
-
-  sudo gem install quirkey-sinatra-gen -s http://gems.github.com
+		
+		
