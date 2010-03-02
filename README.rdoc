@@ -36,8 +36,7 @@ Structure
 	
 
 Introduction
-	Microframework is a small framework based on sinatra, extended with MVC structure mostly concentrating on easy configuration, Advanced Techniques, and should look clean and green in the 
-cloud.
+	Microframework is a small framework based on sinatra, extended with MVC structure mostly concentrating on easy configuration, Advanced Techniques, and should look clean and green in the cloud.
 
 Start
 	1. ruby <projectname> <type of project>
